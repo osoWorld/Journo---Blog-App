@@ -66,9 +66,18 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         : JImages.splashIconLight),
                     height: 30,
                   ),
-                  const CircleAvatar(
-                    foregroundImage: AssetImage(JImages.profilePlaceHolder),
-                    maxRadius: 32,
+                  CircleAvatar(
+                    maxRadius: 45,
+                    child: ClipOval(
+                      child: SizedBox(
+                        width: 45,
+                        height: 45,
+                        child: Image.asset(
+                          JImages.profilePlaceHolder,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
                   )
                 ],
               ),
