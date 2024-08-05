@@ -20,259 +20,251 @@ class _LoginScreenState extends State<LoginScreen> {
   var isObscure = true;
   final _formKey = GlobalKey<FormState>();
   var isChecked = false;
+
   @override
   Widget build(BuildContext context) {
     final isDark = JHelper.isDarkMode(context);
-    final height = JHelper.screenHeight(context);
-    final width = JHelper.screenWidth(context);
 
     return Scaffold(
-      body: GestureDetector(
-        onTap: () {
-          FocusScope.of(context).unfocus();
-        },
-        child: Stack(
+        backgroundColor: isDark ? JColors.blue : JColors.orange,
+        appBar: AppBar(automaticallyImplyLeading: false,),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Container(
-              height: height,
-              width: width,
-              color: isDark ? JColors.blue : JColors.orange,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(
-                top: JSizes.appBarHeight * 1.5,
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Image(image: AssetImage(JImages.splashIconDark)),
-                  Expanded(
-                    child: Align(
-                      alignment: Alignment.bottomCenter,
-                      child: SingleChildScrollView(
-                        child: AnimatedContainer(
-                          duration: const Duration(milliseconds: 150),
-                          curve: Curves.easeInOut,
-                          decoration: const BoxDecoration(
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(
-                                    JSizes.borderRadiusXLg * 2.5),
-                                topRight: Radius.circular(
-                                    JSizes.borderRadiusXLg * 2.5),
-                              ),
-                              color: JColors.white
+            const Image(image: AssetImage(JImages.splashIconDark)),
+            Expanded(
+              child: Align(
+                alignment: Alignment.bottomCenter,
+                child: SingleChildScrollView(
+                  child: AnimatedContainer(
+                    duration: const Duration(milliseconds: 3),
+                    curve: Curves.easeInOut,
+                    decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                          topLeft:
+                              Radius.circular(JSizes.borderRadiusXLg * 2.5),
+                          topRight:
+                              Radius.circular(JSizes.borderRadiusXLg * 2.5),
+                        ),
+                        color: JColors.white),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: JSizes.appBarHeight,
+                          horizontal: JSizes.spaceBtwSections),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            JText.login,
+                            style: TextStyle(
+                                color: isDark ? JColors.blue : JColors.orange,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18),
                           ),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                                vertical: JSizes.appBarHeight,
-                                horizontal: JSizes.spaceBtwSections),
+                          const SizedBox(
+                            height: JSizes.spaceBtwSections,
+                          ),
+                          Form(
+                            key: _formKey,
                             child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text(
-                                  JText.login,
-                                  style: TextStyle(
-                                      color:
-                                      isDark ? JColors.blue : JColors.orange,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 18),
+                                TextFormField(
+                                  style:
+                                      const TextStyle(color: JColors.black),
+                                  decoration: InputDecoration(
+                                      label: Text(
+                                        JText.email,
+                                        style: TextStyle(
+                                            color: isDark
+                                                ? JColors.blue
+                                                : JColors.orange,
+                                            fontWeight: FontWeight.w500,
+                                            fontSize: 14),
+                                      ),
+                                      prefixIcon: Icon(
+                                        Iconsax.direct,
+                                        color: isDark
+                                            ? JColors.blue
+                                            : JColors.orange,
+                                      ),
+                                      // border: OutlineInputBorder(
+                                      //   borderRadius: BorderRadius.circular(
+                                      //       JSizes.borderRadiusXLg),
+                                      // ),
+                                      enabledBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(
+                                              JSizes.borderRadiusXLg),
+                                          borderSide: BorderSide(
+                                              color: isDark
+                                                  ? JColors.blue
+                                                  : JColors.orange,
+                                              width: 1)),
+                                      focusedBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(
+                                              JSizes.borderRadiusXLg),
+                                          borderSide: BorderSide(
+                                              color: isDark
+                                                  ? JColors.blue
+                                                  : JColors.orange,
+                                              width: 2))),
                                 ),
                                 const SizedBox(
                                   height: JSizes.spaceBtwSections,
                                 ),
-                                Form(
-                                  key: _formKey,
-                                  child: Column(
-                                    children: [
-                                      TextFormField(
-                                        style: const TextStyle(color: JColors.black),
-                                        decoration: InputDecoration(
-                                            label: Text(
-                                              JText.email,
-                                              style: TextStyle(
-                                                  color: isDark
-                                                      ? JColors.blue
-                                                      : JColors.orange,
-                                                  fontWeight: FontWeight.w500,
-                                                  fontSize: 14),
-                                            ),
-                                            prefixIcon: Icon(
-                                              Iconsax.direct,
+                                TextFormField(
+                                  obscureText: isObscure,
+                                  style:
+                                      const TextStyle(color: JColors.black),
+                                  decoration: InputDecoration(
+                                      label: Text(
+                                        JText.password,
+                                        style: TextStyle(
+                                            color: isDark
+                                                ? JColors.blue
+                                                : JColors.orange,
+                                            fontWeight: FontWeight.w500,
+                                            fontSize: 14),
+                                      ),
+                                      prefixIcon: Icon(
+                                        Iconsax.password_check,
+                                        color: isDark
+                                            ? JColors.blue
+                                            : JColors.orange,
+                                      ),
+                                      suffixIcon: IconButton(
+                                          onPressed: () => setState(() {
+                                                isObscure = !isObscure;
+                                              }),
+                                          icon: Icon(
+                                            isObscure
+                                                ? Iconsax.eye_slash
+                                                : Iconsax.eye,
+                                            color: isDark
+                                                ? JColors.blue
+                                                : JColors.orange,
+                                          )),
+                                      // border: OutlineInputBorder(
+                                      //   borderRadius: BorderRadius.circular(
+                                      //       JSizes.borderRadiusXLg),
+                                      // ),
+                                      enabledBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(
+                                              JSizes.borderRadiusXLg),
+                                          borderSide: BorderSide(
                                               color: isDark
                                                   ? JColors.blue
                                                   : JColors.orange,
-                                            ),
-                                            border: OutlineInputBorder(
-                                              borderRadius: BorderRadius
-                                                  .circular(
-                                                  JSizes.borderRadiusXLg),
-                                            ),
-                                            enabledBorder: OutlineInputBorder(
-                                                borderRadius:
-                                                BorderRadius.circular(
-                                                    JSizes.borderRadiusXLg),
-                                                borderSide: BorderSide(
-                                                    color: isDark
-                                                        ? JColors.blue
-                                                        : JColors.orange,
-                                                    width: 1)),
-                                            focusedBorder: OutlineInputBorder(
-                                                borderRadius:
-                                                BorderRadius.circular(
-                                                    JSizes.borderRadiusXLg),
-                                                borderSide: BorderSide(
-                                                    color: isDark
-                                                        ? JColors.blue
-                                                        : JColors.orange,
-                                                    width: 2))),
-                                      ),
-                                      const SizedBox(
-                                        height: JSizes.spaceBtwSections,
-                                      ),
-                                      TextFormField(
-                                        obscureText: isObscure,
-                                        style: const TextStyle(color: JColors.black),
-                                        decoration: InputDecoration(
-                                            label: Text(
-                                              JText.password,
-                                              style: TextStyle(
-                                                  color: isDark
-                                                      ? JColors.blue
-                                                      : JColors.orange,
-                                                  fontWeight: FontWeight.w500,
-                                                  fontSize: 14),
-                                            ),
-                                            prefixIcon: Icon(
-                                              Iconsax.password_check,
+                                              width: 1)),
+                                      focusedBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(
+                                              JSizes.borderRadiusXLg),
+                                          borderSide: BorderSide(
                                               color: isDark
                                                   ? JColors.blue
                                                   : JColors.orange,
-                                            ),
-                                            suffixIcon: IconButton(onPressed: () => setState(() {
-                                              isObscure = !isObscure;
-                                            }), icon: Icon(isObscure ? Iconsax.eye_slash : Iconsax.eye, color: isDark ? JColors.blue : JColors.orange,)),
-                                            border: OutlineInputBorder(
-                                              borderRadius: BorderRadius
-                                                  .circular(
-                                                  JSizes.borderRadiusXLg),
-                                            ),
-                                            enabledBorder: OutlineInputBorder(
-                                                borderRadius:
-                                                BorderRadius.circular(
-                                                    JSizes.borderRadiusXLg),
-                                                borderSide: BorderSide(
-                                                    color: isDark
-                                                        ? JColors.blue
-                                                        : JColors.orange,
-                                                    width: 1)),
-                                            focusedBorder: OutlineInputBorder(
-                                                borderRadius:
-                                                BorderRadius.circular(
-                                                    JSizes.borderRadiusXLg),
-                                                borderSide: BorderSide(
-                                                    color: isDark
-                                                        ? JColors.blue
-                                                        : JColors.orange,
-                                                    width: 2))),
-                                      ),
-                                      const SizedBox(
-                                        height: JSizes.spaceBtwItems,
-                                      ),
-                                      Row(
-                                        mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Row(
-                                            children: [
-                                              Checkbox(
-                                                value: isChecked,
-                                                onChanged: (value) => setState(() {
-                                                  isChecked = !isChecked;
-                                                }),
-                                                shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                  BorderRadius.circular(4),
-                                                ),
-                                                checkColor: Colors.white,
-                                                activeColor: isDark
-                                                    ? JColors.blue
-                                                    : JColors.orange,
-                                                side: BorderSide(
-                                                    color: isDark
-                                                        ? JColors.blue
-                                                        : JColors.orange,
-                                                    width: 2
-                                                ),
-                                              ),
-                                              Text(
-                                                JText.rememberMe,
-                                                style: TextStyle(
-                                                    color: isDark
-                                                        ? JColors.blue
-                                                        : JColors.orange,
-                                                    fontWeight: FontWeight
-                                                        .w600),
-                                              ),
-                                            ],
-                                          ),
-                                          Text(
-                                            JText.forgetPassword,
-                                            style: TextStyle(
-                                                color: isDark
-                                                    ? JColors.blue
-                                                    : JColors.orange,
-                                                fontWeight: FontWeight.w600),
-                                          )
-                                        ],
-                                      )
-                                    ],
-                                  ),
+                                              width: 2))),
                                 ),
                                 const SizedBox(
-                                  height: JSizes.spaceBtwSections,
+                                  height: JSizes.spaceBtwItems,
                                 ),
-                                MainButton(
-                                    buttonText: JText.login,
-                                    onPressed: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const CategoryScreen(),)),
-                                    isDark: isDark),
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
+                                    Row(
+                                      children: [
+                                        Checkbox(
+                                          value: isChecked,
+                                          onChanged: (value) => setState(() {
+                                            isChecked = !isChecked;
+                                          }),
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(4),
+                                          ),
+                                          checkColor: Colors.white,
+                                          activeColor: isDark
+                                              ? JColors.blue
+                                              : JColors.orange,
+                                          side: BorderSide(
+                                              color: isDark
+                                                  ? JColors.blue
+                                                  : JColors.orange,
+                                              width: 2),
+                                        ),
+                                        Text(
+                                          JText.rememberMe,
+                                          style: TextStyle(
+                                              color: isDark
+                                                  ? JColors.blue
+                                                  : JColors.orange,
+                                              fontWeight: FontWeight.w600),
+                                        ),
+                                      ],
+                                    ),
                                     Text(
-                                      JText.notHaveAccount,
+                                      JText.forgetPassword,
                                       style: TextStyle(
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 14,
                                           color: isDark
                                               ? JColors.blue
-                                              : JColors.orange),
-                                    ),
-                                    TextButton(
-                                        onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const SignupScreen(),)),
-                                        child: Text(
-                                          JText.signUp,
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 14,
-                                              color: isDark
-                                                  ? JColors.blue
-                                                  : JColors.orange),
-                                        ))
+                                              : JColors.orange,
+                                          fontWeight: FontWeight.w600),
+                                    )
                                   ],
                                 )
                               ],
                             ),
                           ),
-                        ),
+                          const SizedBox(
+                            height: JSizes.spaceBtwSections,
+                          ),
+                          MainButton(
+                              buttonText: JText.login,
+                              onPressed: () => Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        const CategoryScreen(),
+                                  )),
+                              isDark: isDark),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                JText.notHaveAccount,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 14,
+                                    color: isDark
+                                        ? JColors.blue
+                                        : JColors.orange),
+                              ),
+                              TextButton(
+                                  onPressed: () => Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            const SignupScreen(),
+                                      )),
+                                  child: Text(
+                                    JText.signUp,
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 14,
+                                        color: isDark
+                                            ? JColors.blue
+                                            : JColors.orange),
+                                  ))
+                            ],
+                          )
+                        ],
                       ),
                     ),
-                  )
-                ],
+                  ),
+                ),
               ),
             )
           ],
-        ),
-      ),
-    );
+        ));
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:journo/screens/category/classes/category_utils.dart';
+import 'package:journo/screens/dashboard/dashboard.dart';
 import 'package:journo/utils/constants/colors.dart';
 import 'package:journo/utils/constants/image_strings.dart';
 import 'package:journo/utils/constants/sizes.dart';
@@ -31,9 +32,10 @@ class _CategoryScreenState extends State<CategoryScreen> {
     final width = JHelper.screenWidth(context);
 
     return Scaffold(
+      appBar: AppBar(automaticallyImplyLeading: false,),
       body: Padding(
         padding: const EdgeInsets.symmetric(
-            vertical: JSizes.appBarHeight * 2,
+            vertical: JSizes.spaceBtwItems ,
             horizontal: JSizes.spaceBtwSections),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -86,18 +88,22 @@ class _CategoryScreenState extends State<CategoryScreen> {
               children: List<Widget>.generate(
                   JCategoryUtils.categoryItems.length, (index) {
                 return RawChip(
-                  label: Padding(padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8), child: Text(
-                    JCategoryUtils.categoryItems[index],
-                    style: TextStyle(
-                      color: isSelected[index]
-                          ? JColors.white
-                          : isDark
-                          ? JColors.blue
-                          : JColors.orange,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 12,
+                  label: Padding(
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+                    child: Text(
+                      JCategoryUtils.categoryItems[index],
+                      style: TextStyle(
+                        color: isSelected[index]
+                            ? JColors.white
+                            : isDark
+                                ? JColors.blue
+                                : JColors.orange,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 12,
+                      ),
                     ),
-                  ),),
+                  ),
                   selected: isSelected[index],
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(24),
@@ -106,7 +112,6 @@ class _CategoryScreenState extends State<CategoryScreen> {
                       width: 2,
                     ),
                   ),
-
                   selectedColor: isDark ? JColors.blue : JColors.orange,
                   backgroundColor: Colors.transparent,
                   showCheckmark: false,
@@ -122,7 +127,13 @@ class _CategoryScreenState extends State<CategoryScreen> {
             ),
 
             MainButton(
-                buttonText: JText.continueT, onPressed: () {}, isDark: isDark),
+                buttonText: JText.continueT,
+                onPressed: () => Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const DashboardScreen(),
+                    )),
+                isDark: isDark),
           ],
         ),
       ),

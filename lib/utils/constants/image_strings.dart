@@ -14,4 +14,7 @@ class JImages {
 
   // Choice Screen Image
   static const choiceBgImg = "assets/images/choice_background_image.png";
+
+  // Profile
+  static const profilePlaceHolder = "assets/images/placeholder_profile.png";
 }
