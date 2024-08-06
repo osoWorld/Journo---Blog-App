@@ -10,4 +10,10 @@ class JColors {
   static const orange = Color(0xFFE85520);
   static const blue = Color(0xFF176CFA);
 
+  static const black2 = Color(0xFF303030);
+  static const black3 = Color(0xFF2B2B2B);
+
+  static const white2 = Color(0xFFF5F5F5); // Very light grey, almost white
+  static const white3 = Color(0xFFE0E0E0); // Light grey
+
 }

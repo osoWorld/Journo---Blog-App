@@ -31,9 +31,17 @@ class JText {
   static const tech = "Tech";
   static const artificialIntelligence = "Artificial Intelligence";
   static const science = "Science";
+  static const health = "Health";
+  static const politics = "Politics";
+  static const weather = "Weather";
+  static const latest = "Latest";
 
 
   // Common Text
   static const continueT = "Continue";
+  static const searchT = "Search";
+
+  // Testing/Demo/Debugging
+  static const demoBlogText = "Space Falcon Announces Strategic Partnership with AV Star Capital.";
 
 }

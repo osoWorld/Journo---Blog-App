@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:journo/screens/dashboard/screens/home/home.dart';
 import 'package:journo/utils/constants/colors.dart';
 import 'package:journo/utils/constants/image_strings.dart';
 import 'package:journo/utils/constants/sizes.dart';
@@ -16,11 +17,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   var selectedIndex = 0;
 
   static final List<Widget> screens = [
-    Container(
-      height: double.infinity,
-      width: double.infinity,
-      color: Colors.orange,
-    ),
+    const HomeScreen(),
     Container(
       height: double.infinity,
       width: double.infinity,
@@ -88,7 +85,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
       body: screens[selectedIndex],
       bottomNavigationBar: BottomAppBar(
         height: 60,
-        color: JColors.white,
+        color: isDark ? JColors.black : JColors.white,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
@@ -135,7 +132,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   ? isDark
                       ? JColors.blue
                       : JColors.orange
-                  : JColors.black,
+                  : isDark
+              ? JColors.white
+              : JColors.black,
             ),
           ),
         ],

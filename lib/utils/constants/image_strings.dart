@@ -17,4 +17,9 @@ class JImages {
 
   // Profile
   static const profilePlaceHolder = "assets/images/placeholder_profile.png";
+
+  // Demo/Test/Debugging
+  static const horizontalDemo = "assets/images/horizontal.jpg";
+  static const verticalDemo = "assets/images/vertical.jpg";
+
 }
