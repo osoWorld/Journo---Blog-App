@@ -141,6 +141,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     color: JColors.textGrey,
                                     fontWeight: FontWeight.w600,
                                     fontSize: 9),
+                                maxLines: 4,
                               ),
                               CircleAvatar(
                                 maxRadius: 2,

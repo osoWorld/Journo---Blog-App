@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:journo/screens/dashboard/screens/home/home.dart';
+import 'package:journo/screens/dashboard/screens/save/save.dart';
 import 'package:journo/utils/constants/colors.dart';
 import 'package:journo/utils/constants/image_strings.dart';
 import 'package:journo/utils/constants/sizes.dart';
@@ -20,11 +21,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   static final List<Widget> screens = [
     const HomeScreen(),
-    Container(
-      height: double.infinity,
-      width: double.infinity,
-      color: Colors.blue,
-    ),
+    const SaveScreen(),
     Container(
       height: double.infinity,
       width: double.infinity,
