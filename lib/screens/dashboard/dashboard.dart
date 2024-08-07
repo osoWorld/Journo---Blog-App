@@ -6,6 +6,8 @@ import 'package:journo/utils/constants/image_strings.dart';
 import 'package:journo/utils/constants/sizes.dart';
 import 'package:journo/utils/helpers/helper_functions.dart';
 
+import '../../utils/constants/text_strings.dart';
+
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
 
@@ -46,15 +48,17 @@ class _DashboardScreenState extends State<DashboardScreen> {
     final isDark = JHelper.isDarkMode(context);
     final width = JHelper.screenWidth(context);
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        actions: [
-          SizedBox(
-            width: width,
-            child: Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: JSizes.defaultSpace, vertical: 10),
-              child: Row(
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(120),
+        child: AppBar(
+          automaticallyImplyLeading: false,
+          flexibleSpace: Padding(
+              padding: const EdgeInsets.symmetric(
+                  horizontal: JSizes.defaultSpace, vertical: 10),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Image(
@@ -64,7 +68,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     height: 30,
                   ),
                   CircleAvatar(
-                    maxRadius: 45,
+                    maxRadius: 22.5,
                     child: ClipOval(
                       child: SizedBox(
                         width: 45,
@@ -78,9 +82,37 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   )
                 ],
               ),
-            ),
-          )
-        ],
+
+              const SizedBox(height: 10,),
+
+              /// Search Form Field
+              TextFormField(
+                decoration: InputDecoration(
+                    label: Text(
+                      JText.searchT,
+                      style: TextStyle(
+                          color: isDark ? JColors.white : JColors.black),
+                    ),
+                    prefixIcon: Icon(
+                      Iconsax.search_normal,
+                      color: isDark ? JColors.blue : JColors.orange,
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                        borderRadius:
+                        BorderRadius.circular(JSizes.borderRadiusXLg),
+                        borderSide: BorderSide(
+                            color: isDark ? JColors.blue : JColors.orange,
+                            width: 1)),
+                    focusedBorder: OutlineInputBorder(
+                        borderRadius:
+                        BorderRadius.circular(JSizes.borderRadiusXLg),
+                        borderSide: BorderSide(
+                            color: isDark ? JColors.blue : JColors.orange,
+                            width: 2))),
+              ),
+            ],
+          ),),
+        ),
       ),
       body: screens[selectedIndex],
       bottomNavigationBar: BottomAppBar(
@@ -116,6 +148,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      // resizeToAvoidBottomInset: false, // This line prevents the FAB from moving up with the keyboard
     );
   }
 
@@ -133,8 +166,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       ? JColors.blue
                       : JColors.orange
                   : isDark
-              ? JColors.white
-              : JColors.black,
+                      ? JColors.white
+                      : JColors.black,
             ),
           ),
         ],

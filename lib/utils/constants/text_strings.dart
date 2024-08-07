@@ -43,5 +43,7 @@ class JText {
 
   // Testing/Demo/Debugging
   static const demoBlogText = "Space Falcon Announces Strategic Partnership with AV Star Capital.";
+  static const demoDate = "07 August 2024";
+  static const demoRead = "4 min read";
 
 }

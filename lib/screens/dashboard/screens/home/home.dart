@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:journo/screens/category/classes/category_utils.dart';
 import 'package:journo/utils/constants/colors.dart';
 import 'package:journo/utils/constants/image_strings.dart';
@@ -19,13 +18,17 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   var selectedChipIndex = 0;
   final ItemScrollController itemScrollController = ItemScrollController();
-  final ItemPositionsListener itemPositionsListener = ItemPositionsListener.create();
+  final ItemPositionsListener itemPositionsListener =
+      ItemPositionsListener.create();
 
   void scrollToIndex(int index) {
-    if(itemScrollController.isAttached) {
-      itemScrollController.scrollTo(index: index, duration: const Duration(milliseconds: 200),
-      curve: Curves.easeInOut,
-      alignment: 0.3); // Adjust the alignment to keep the chip more centered
+    if (itemScrollController.isAttached) {
+      itemScrollController.scrollTo(
+          index: index,
+          duration: const Duration(milliseconds: 200),
+          curve: Curves.easeInOut,
+          alignment:
+              0.3); // Adjust the alignment to keep the chip more centered
     }
   }
 
@@ -34,38 +37,12 @@ class _HomeScreenState extends State<HomeScreen> {
     final isDark = JHelper.isDarkMode(context);
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.only(top: JSizes.defaultSpace,
+        padding: const EdgeInsets.only(
+            top: JSizes.defaultSpace,
             left: JSizes.defaultSpace,
             right: JSizes.defaultSpace),
         child: Column(
           children: [
-            TextFormField(
-              decoration: InputDecoration(
-                  label: Text(
-                    JText.searchT,
-                    style: TextStyle(
-                        color: isDark ? JColors.white : JColors.black),
-                  ),
-                  prefixIcon: Icon(
-                    Iconsax.search_normal,
-                    color: isDark ? JColors.blue : JColors.orange,
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                      borderRadius:
-                      BorderRadius.circular(JSizes.borderRadiusXLg),
-                      borderSide: BorderSide(
-                          color: isDark ? JColors.blue : JColors.orange,
-                          width: 1)),
-                  focusedBorder: OutlineInputBorder(
-                      borderRadius:
-                      BorderRadius.circular(JSizes.borderRadiusXLg),
-                      borderSide: BorderSide(
-                          color: isDark ? JColors.blue : JColors.orange,
-                          width: 2))),
-            ),
-            const SizedBox(
-              height: JSizes.defaultSpace,
-            ),
             SizedBox(
                 height: 50,
                 child: ScrollablePositionedList.builder(
@@ -84,8 +61,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               color: isSelected
                                   ? JColors.white
                                   : isDark
-                                  ? JColors.blue
-                                  : JColors.orange,
+                                      ? JColors.blue
+                                      : JColors.orange,
                               fontWeight: FontWeight.w600,
                               fontSize: 12),
                         ),
@@ -99,11 +76,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         selectedColor: isDark ? JColors.blue : JColors.orange,
                         showCheckmark: false,
                         backgroundColor: Colors.transparent,
-                        onSelected: (value) =>
-                            setState(() {
-                              selectedChipIndex = index;
-                              scrollToIndex(index);
-                            }),
+                        onSelected: (value) => setState(() {
+                          selectedChipIndex = index;
+                          scrollToIndex(index);
+                        }),
                       ),
                     );
                   },
@@ -152,6 +128,32 @@ class _HomeScreenState extends State<HomeScreen> {
                                 color: isDark ? JColors.blue : JColors.orange,
                                 fontWeight: FontWeight.w600,
                                 fontSize: 12),
+                          ),
+                          const SizedBox(
+                            height: JSizes.defaultSpace / 2,
+                          ),
+                          const Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                JText.demoDate,
+                                style: TextStyle(
+                                    color: JColors.textGrey,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 9),
+                              ),
+                              CircleAvatar(
+                                maxRadius: 2,
+                                backgroundColor: JColors.dotGrey,
+                              ),
+                              Text(
+                                JText.demoRead,
+                                style: TextStyle(
+                                    color: JColors.textGrey,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 9),
+                              ),
+                            ],
                           )
                         ],
                       ),

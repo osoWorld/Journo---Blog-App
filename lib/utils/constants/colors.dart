@@ -16,4 +16,7 @@ class JColors {
   static const white2 = Color(0xFFF5F5F5); // Very light grey, almost white
   static const white3 = Color(0xFFE0E0E0); // Light grey
 
+  static const textGrey = Color(0xFF808080); // Light grey
+  static const dotGrey = Color(0xFFD9CCCC); // Light grey
+
 }
