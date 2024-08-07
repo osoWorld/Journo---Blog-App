@@ -40,7 +40,7 @@ class _SaveScreenState extends State<SaveScreen> {
                       child: Image.asset(
                         JImages.horizontalDemo,
                         fit: BoxFit.cover,
-                        height: 230,
+                        height: 220,
                       ),
                     ),
                     const SizedBox(
@@ -78,7 +78,7 @@ class _SaveScreenState extends State<SaveScreen> {
               crossAxisCount: 2,
               mainAxisSpacing: 4,
               crossAxisSpacing: 4,
-              childAspectRatio: 0.47),
+              childAspectRatio: 0.485),
         ),
       ),
     );
