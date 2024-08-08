@@ -19,4 +19,7 @@ class JColors {
   static const textGrey = Color(0xFF808080); // Light grey
   static const dotGrey = Color(0xFFD9CCCC); // Light grey
 
+  static const green = Color(0xFF00C844);
+  static const red = Color(0xFFC80048);
+
 }

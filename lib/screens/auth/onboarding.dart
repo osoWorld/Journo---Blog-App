@@ -91,7 +91,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     isDark: isDark,
                     onPressed: () => pageController.animateToPage(
                         controller.item.length - 1,
-                        duration: const Duration(milliseconds: 400),
+                        duration: const Duration(milliseconds: 300),
                         curve: Curves.easeInOut),
                   ),
                   SmoothPageIndicator(

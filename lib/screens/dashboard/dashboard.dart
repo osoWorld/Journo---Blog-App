@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:journo/screens/dashboard/screens/favorites/favorites.dart';
 import 'package:journo/screens/dashboard/screens/home/home.dart';
+import 'package:journo/screens/dashboard/screens/notification/notification.dart';
 import 'package:journo/screens/dashboard/screens/save/save.dart';
+import 'package:journo/screens/dashboard/screens/user_profile/user_profile.dart';
 import 'package:journo/utils/constants/colors.dart';
 import 'package:journo/utils/constants/image_strings.dart';
 import 'package:journo/utils/constants/sizes.dart';
@@ -24,11 +26,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
     const HomeScreen(),
     const SaveScreen(),
     const FavoritesScreen(),
-    Container(
-      height: double.infinity,
-      width: double.infinity,
-      color: Colors.limeAccent,
-    ),
+    const NotificationScreen(),
   ];
 
   void onItemTap(int index) {
@@ -63,14 +61,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   ),
                   CircleAvatar(
                     maxRadius: 22.5,
-                    child: ClipOval(
-                      child: SizedBox(
-                        width: 45,
-                        height: 45,
-                        child: Image.asset(
-                          JImages.profilePlaceHolder,
-                          fit: BoxFit.cover,
-                        ),
+                    child: SizedBox(
+                      width: 45,
+                      height: 45,
+                      child: Image.asset(
+                        JImages.profilePlaceHolder,
+                        fit: BoxFit.cover,
                       ),
                     ),
                   )
