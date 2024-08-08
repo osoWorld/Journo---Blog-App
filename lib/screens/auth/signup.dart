@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:journo/screens/auth/gender.dart';
 import 'package:journo/screens/auth/login.dart';
 import 'package:journo/utils/constants/colors.dart';
 import 'package:journo/utils/constants/image_strings.dart';
@@ -46,7 +47,6 @@ class _SignupScreenState extends State<SignupScreen> {
                       topLeft: Radius.circular(JSizes.borderRadiusXLg * 2.5),
                       topRight: Radius.circular(JSizes.borderRadiusXLg * 2.5),
                     ),
-                    
                     color: JColors.white,
                   ),
                   child: Padding(
@@ -73,38 +73,79 @@ class _SignupScreenState extends State<SignupScreen> {
                           child: Column(
                             children: [
                               TextFormField(
+                                decoration: InputDecoration(
+                                    label: Text(
+                                      JText.yourName,
+                                      style: TextStyle(
+                                          color: isDark
+                                              ? JColors.blue
+                                              : JColors.orange),
+                                    ),
+                                    prefixIcon: Icon(
+                                      Iconsax.user,
+                                      color: isDark
+                                          ? JColors.blue
+                                          : JColors.orange,
+                                    ),
+                                    enabledBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(
+                                            JSizes.borderRadiusXLg),
+                                        borderSide: BorderSide(
+                                            color: isDark
+                                                ? JColors.blue
+                                                : JColors.orange,
+                                            width: 1)),
+                                    focusedBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(
+                                            JSizes.borderRadiusXLg),
+                                        borderSide: BorderSide(
+                                            color: isDark
+                                                ? JColors.blue
+                                                : JColors.orange,
+                                            width: 2))),
+                              ),
+                              const SizedBox(height: JSizes.defaultSpace,),
+
+                              TextFormField(
                                 style: const TextStyle(color: JColors.black),
                                 decoration: InputDecoration(
                                   label: Text(
                                     JText.email,
                                     style: TextStyle(
-                                      color: isDark ? JColors.blue : JColors.orange,
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 14,
+                                      color: isDark
+                                          ? JColors.blue
+                                          : JColors.orange,
                                     ),
                                   ),
                                   prefixIcon: Icon(
                                     Iconsax.direct,
-                                    color: isDark ? JColors.blue : JColors.orange,
+                                    color:
+                                    isDark ? JColors.blue : JColors.orange,
                                   ),
                                   enabledBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(JSizes.borderRadiusXLg),
+                                    borderRadius: BorderRadius.circular(
+                                        JSizes.borderRadiusXLg),
                                     borderSide: BorderSide(
-                                      color: isDark ? JColors.blue : JColors.orange,
+                                      color: isDark
+                                          ? JColors.blue
+                                          : JColors.orange,
                                       width: 1,
                                     ),
                                   ),
                                   focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(JSizes.borderRadiusXLg),
+                                    borderRadius: BorderRadius.circular(
+                                        JSizes.borderRadiusXLg),
                                     borderSide: BorderSide(
-                                      color: isDark ? JColors.blue : JColors.orange,
+                                      color: isDark
+                                          ? JColors.blue
+                                          : JColors.orange,
                                       width: 2,
                                     ),
                                   ),
                                 ),
                               ),
                               const SizedBox(
-                                height: JSizes.spaceBtwSections,
+                                height: JSizes.defaultSpace,
                               ),
                               TextFormField(
                                 obscureText: isObscurePass,
@@ -113,42 +154,54 @@ class _SignupScreenState extends State<SignupScreen> {
                                   label: Text(
                                     JText.password,
                                     style: TextStyle(
-                                      color: isDark ? JColors.blue : JColors.orange,
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 14,
+                                      color: isDark
+                                          ? JColors.blue
+                                          : JColors.orange,
                                     ),
                                   ),
                                   prefixIcon: Icon(
                                     Iconsax.lock,
-                                    color: isDark ? JColors.blue : JColors.orange,
+                                    color:
+                                    isDark ? JColors.blue : JColors.orange,
                                   ),
                                   suffixIcon: IconButton(
-                                    onPressed: () => setState(() {
-                                      isObscurePass = !isObscurePass;
-                                    }),
+                                    onPressed: () =>
+                                        setState(() {
+                                          isObscurePass = !isObscurePass;
+                                        }),
                                     icon: Icon(
-                                      isObscurePass ? Iconsax.eye_slash : Iconsax.eye,
-                                      color: isDark ? JColors.blue : JColors.orange,
+                                      isObscurePass
+                                          ? Iconsax.eye_slash
+                                          : Iconsax.eye,
+                                      color: isDark
+                                          ? JColors.blue
+                                          : JColors.orange,
                                     ),
                                   ),
                                   enabledBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(JSizes.borderRadiusXLg),
+                                    borderRadius: BorderRadius.circular(
+                                        JSizes.borderRadiusXLg),
                                     borderSide: BorderSide(
-                                      color: isDark ? JColors.blue : JColors.orange,
+                                      color: isDark
+                                          ? JColors.blue
+                                          : JColors.orange,
                                       width: 1,
                                     ),
                                   ),
                                   focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(JSizes.borderRadiusXLg),
+                                    borderRadius: BorderRadius.circular(
+                                        JSizes.borderRadiusXLg),
                                     borderSide: BorderSide(
-                                      color: isDark ? JColors.blue : JColors.orange,
+                                      color: isDark
+                                          ? JColors.blue
+                                          : JColors.orange,
                                       width: 2,
                                     ),
                                   ),
                                 ),
                               ),
                               const SizedBox(
-                                height: JSizes.spaceBtwSections,
+                                height: JSizes.defaultSpace,
                               ),
                               TextFormField(
                                 obscureText: isObscureConfirmPass,
@@ -157,65 +210,84 @@ class _SignupScreenState extends State<SignupScreen> {
                                   label: Text(
                                     JText.confirmPassword,
                                     style: TextStyle(
-                                      color: isDark ? JColors.blue : JColors.orange,
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 14,
+                                      color: isDark
+                                          ? JColors.blue
+                                          : JColors.orange,
                                     ),
                                   ),
                                   prefixIcon: Icon(
                                     Iconsax.lock,
-                                    color: isDark ? JColors.blue : JColors.orange,
+                                    color:
+                                    isDark ? JColors.blue : JColors.orange,
                                   ),
                                   suffixIcon: IconButton(
-                                    onPressed: () => setState(() {
-                                      isObscureConfirmPass = !isObscureConfirmPass;
-                                    }),
+                                    onPressed: () =>
+                                        setState(() {
+                                          isObscureConfirmPass =
+                                          !isObscureConfirmPass;
+                                        }),
                                     icon: Icon(
-                                      isObscureConfirmPass ? Iconsax.eye_slash : Iconsax.eye,
-                                      color: isDark ? JColors.blue : JColors.orange,
+                                      isObscureConfirmPass
+                                          ? Iconsax.eye_slash
+                                          : Iconsax.eye,
+                                      color: isDark
+                                          ? JColors.blue
+                                          : JColors.orange,
                                     ),
                                   ),
                                   enabledBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(JSizes.borderRadiusXLg),
+                                    borderRadius: BorderRadius.circular(
+                                        JSizes.borderRadiusXLg),
                                     borderSide: BorderSide(
-                                      color: isDark ? JColors.blue : JColors.orange,
+                                      color: isDark
+                                          ? JColors.blue
+                                          : JColors.orange,
                                       width: 1,
                                     ),
                                   ),
                                   focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(JSizes.borderRadiusXLg),
+                                    borderRadius: BorderRadius.circular(
+                                        JSizes.borderRadiusXLg),
                                     borderSide: BorderSide(
-                                      color: isDark ? JColors.blue : JColors.orange,
+                                      color: isDark
+                                          ? JColors.blue
+                                          : JColors.orange,
                                       width: 2,
                                     ),
                                   ),
                                 ),
                               ),
                               const SizedBox(
-                                height: JSizes.spaceBtwItems,
+                                height: JSizes.spaceBtwItems / 1.5,
                               ),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   Checkbox(
                                     value: isChecked,
-                                    onChanged: (value) => setState(() {
-                                      isChecked = value ?? false;
-                                    }),
+                                    onChanged: (value) =>
+                                        setState(() {
+                                          isChecked = value ?? false;
+                                        }),
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(4),
                                     ),
                                     checkColor: Colors.white,
-                                    activeColor: isDark ? JColors.blue : JColors.orange,
+                                    activeColor:
+                                    isDark ? JColors.blue : JColors.orange,
                                     side: BorderSide(
-                                      color: isDark ? JColors.blue : JColors.orange,
+                                      color: isDark
+                                          ? JColors.blue
+                                          : JColors.orange,
                                       width: 2,
                                     ),
                                   ),
                                   Text(
                                     JText.rememberMe,
                                     style: TextStyle(
-                                      color: isDark ? JColors.blue : JColors.orange,
+                                      color: isDark
+                                          ? JColors.blue
+                                          : JColors.orange,
                                       fontWeight: FontWeight.w600,
                                     ),
                                   ),
@@ -230,7 +302,9 @@ class _SignupScreenState extends State<SignupScreen> {
                         MainButton(
                           buttonText: JText.signUp,
                           onPressed: () {
-                            // Add sign up logic here
+                            Navigator.pushReplacement(context,
+                                MaterialPageRoute(
+                                  builder: (context) => const GenderScreen(),));
                           },
                           isDark: isDark,
                         ),
@@ -246,12 +320,13 @@ class _SignupScreenState extends State<SignupScreen> {
                               ),
                             ),
                             TextButton(
-                              onPressed: () => Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const LoginScreen(),
-                                ),
-                              ),
+                              onPressed: () =>
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => const LoginScreen(),
+                                    ),
+                                  ),
                               child: Text(
                                 JText.login,
                                 style: TextStyle(
