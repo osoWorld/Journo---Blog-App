@@ -45,63 +45,73 @@ class _DashboardScreenState extends State<DashboardScreen> {
         child: AppBar(
           automaticallyImplyLeading: false,
           flexibleSpace: Padding(
-              padding: const EdgeInsets.symmetric(
-                  horizontal: JSizes.defaultSpace, vertical: 10),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Image(
-                    image: AssetImage(isDark
-                        ? JImages.splashIconDark
-                        : JImages.splashIconLight),
-                    height: 30,
-                  ),
-                  CircleAvatar(
-                    maxRadius: 22.5,
-                    child: SizedBox(
-                      width: 45,
-                      height: 45,
-                      child: Image.asset(
-                        JImages.profilePlaceHolder,
-                        fit: BoxFit.cover,
+            padding: const EdgeInsets.symmetric(
+                horizontal: JSizes.defaultSpace, vertical: 10),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Image(
+                      image: AssetImage(isDark
+                          ? JImages.splashIconDark
+                          : JImages.splashIconLight),
+                      height: 30,
+                    ),
+                    InkWell(
+                      onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const UserProfileScreen(),
+                          )),
+                      child: CircleAvatar(
+                        maxRadius: 22.5,
+                        child: SizedBox(
+                          width: 45,
+                          height: 45,
+                          child: Image.asset(
+                            JImages.profilePlaceHolder,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
                       ),
-                    ),
-                  )
-                ],
-              ),
+                    )
+                  ],
+                ),
 
-              const SizedBox(height: 10,),
+                const SizedBox(
+                  height: 10,
+                ),
 
-              /// Search Form Field
-              TextFormField(
-                decoration: InputDecoration(
-                    label: Text(
-                      JText.searchT,
-                      style: TextStyle(
-                          color: isDark ? JColors.white : JColors.black),
-                    ),
-                    prefixIcon: Icon(
-                      Iconsax.search_normal,
-                      color: isDark ? JColors.blue : JColors.orange,
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                        borderRadius:
-                        BorderRadius.circular(JSizes.borderRadiusXLg),
-                        borderSide: BorderSide(
-                            color: isDark ? JColors.blue : JColors.orange,
-                            width: 1)),
-                    focusedBorder: OutlineInputBorder(
-                        borderRadius:
-                        BorderRadius.circular(JSizes.borderRadiusXLg),
-                        borderSide: BorderSide(
-                            color: isDark ? JColors.blue : JColors.orange,
-                            width: 2))),
-              ),
-            ],
-          ),),
+                /// Search Form Field
+                TextFormField(
+                  decoration: InputDecoration(
+                      label: Text(
+                        JText.searchT,
+                        style: TextStyle(
+                            color: isDark ? JColors.white : JColors.black),
+                      ),
+                      prefixIcon: Icon(
+                        Iconsax.search_normal,
+                        color: isDark ? JColors.blue : JColors.orange,
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                          borderRadius:
+                              BorderRadius.circular(JSizes.borderRadiusXLg),
+                          borderSide: BorderSide(
+                              color: isDark ? JColors.blue : JColors.orange,
+                              width: 1)),
+                      focusedBorder: OutlineInputBorder(
+                          borderRadius:
+                              BorderRadius.circular(JSizes.borderRadiusXLg),
+                          borderSide: BorderSide(
+                              color: isDark ? JColors.blue : JColors.orange,
+                              width: 2))),
+                ),
+              ],
+            ),
+          ),
         ),
       ),
       body: screens[selectedIndex],

@@ -50,4 +50,8 @@ class JText {
   static const demoBio = "Mian Suffian is a Full Stack developer and a software engineer who is more passionate about technology. His ambition towards technology is huge.";
   static const demoNotification = "2 More Blogs have been posted for Space and Tourism.";
 
+  //Profile
+
+  static const profileEdit = "You can edit your profile here.";
+  static const yourName = "Your Name";
 }

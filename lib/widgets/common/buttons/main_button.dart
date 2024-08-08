@@ -15,8 +15,8 @@ class MainButton extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(JSizes.md),
       child: SizedBox(
-        width: JHelper.screenWidth(context) * 0.9,
-        height: 50,
+        width: JHelper.screenWidth(context) * 0.7,
+        height: 52,
         child: ElevatedButton(onPressed: onPressed, style: ElevatedButton.styleFrom(
           backgroundColor: isDark ? JColors.blue : JColors.orange,
           shape: RoundedRectangleBorder(
