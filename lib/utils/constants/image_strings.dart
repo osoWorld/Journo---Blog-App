@@ -16,7 +16,8 @@ class JImages {
   static const choiceBgImg = "assets/images/choice_background_image.png";
 
   // Profile
-  static const profilePlaceHolder = "assets/images/placeholder_profile.png";
+  static const maleProfile = "assets/images/placeholder_profile.png";
+  static const femaleProfile = "assets/images/female_profile.png";
 
   // Demo/Test/Debugging
   static const horizontalDemo = "assets/images/horizontal.jpg";

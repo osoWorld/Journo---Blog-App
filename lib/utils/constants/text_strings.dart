@@ -23,6 +23,9 @@ class JText {
   static const alreadyHaveAccount = "Already have an account";
   static const signUp = "Sign up";
 
+  // Gender Screen
+  static const selectGender = "Select your Gender.";
+
   // Category Screen
   static const selectCategoryTitle = "Please select the categories";
   static const selectCategoryDescription = "Note : You can customize your categories \nfrom feed too";

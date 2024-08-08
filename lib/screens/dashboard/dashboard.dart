@@ -71,7 +71,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           width: 45,
                           height: 45,
                           child: Image.asset(
-                            JImages.profilePlaceHolder,
+                            JImages.maleProfile,
                             fit: BoxFit.cover,
                           ),
                         ),

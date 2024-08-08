@@ -38,7 +38,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                   height: 100,
                   width: 100,
                   child: Image.asset(
-                    JImages.profilePlaceHolder,
+                    JImages.maleProfile,
                     fit: BoxFit.cover,
                   ),
                 ),
