@@ -10,10 +10,11 @@ import 'package:journo/utils/helpers/helper_functions.dart';
 import 'package:journo/widgets/common/buttons/main_button.dart';
 
 class SignupScreen extends StatefulWidget {
-  const SignupScreen({super.key});
+  const SignupScreen({super.key, required this.role});
 
   @override
   State<SignupScreen> createState() => _SignupScreenState();
+  final String role;
 }
 
 class _SignupScreenState extends State<SignupScreen> {
@@ -66,6 +67,16 @@ class _SignupScreenState extends State<SignupScreen> {
                           ),
                         ),
                         const SizedBox(
+                          height: JSizes.spaceBtwItems / 2,
+                        ),
+                        Text(
+                          widget.role == "Creator" ? JText.forCreators : "",
+                          style: TextStyle(
+                              color: isDark ? JColors.blue : JColors.orange,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 14),
+                        ),
+                        const SizedBox(
                           height: JSizes.spaceBtwSections,
                         ),
                         Form(
@@ -104,8 +115,9 @@ class _SignupScreenState extends State<SignupScreen> {
                                                 : JColors.orange,
                                             width: 2))),
                               ),
-                              const SizedBox(height: JSizes.defaultSpace,),
-
+                              const SizedBox(
+                                height: JSizes.defaultSpace,
+                              ),
                               TextFormField(
                                 style: const TextStyle(color: JColors.black),
                                 decoration: InputDecoration(
@@ -120,7 +132,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                   prefixIcon: Icon(
                                     Iconsax.direct,
                                     color:
-                                    isDark ? JColors.blue : JColors.orange,
+                                        isDark ? JColors.blue : JColors.orange,
                                   ),
                                   enabledBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(
@@ -162,13 +174,12 @@ class _SignupScreenState extends State<SignupScreen> {
                                   prefixIcon: Icon(
                                     Iconsax.lock,
                                     color:
-                                    isDark ? JColors.blue : JColors.orange,
+                                        isDark ? JColors.blue : JColors.orange,
                                   ),
                                   suffixIcon: IconButton(
-                                    onPressed: () =>
-                                        setState(() {
-                                          isObscurePass = !isObscurePass;
-                                        }),
+                                    onPressed: () => setState(() {
+                                      isObscurePass = !isObscurePass;
+                                    }),
                                     icon: Icon(
                                       isObscurePass
                                           ? Iconsax.eye_slash
@@ -218,14 +229,13 @@ class _SignupScreenState extends State<SignupScreen> {
                                   prefixIcon: Icon(
                                     Iconsax.lock,
                                     color:
-                                    isDark ? JColors.blue : JColors.orange,
+                                        isDark ? JColors.blue : JColors.orange,
                                   ),
                                   suffixIcon: IconButton(
-                                    onPressed: () =>
-                                        setState(() {
-                                          isObscureConfirmPass =
+                                    onPressed: () => setState(() {
+                                      isObscureConfirmPass =
                                           !isObscureConfirmPass;
-                                        }),
+                                    }),
                                     icon: Icon(
                                       isObscureConfirmPass
                                           ? Iconsax.eye_slash
@@ -265,16 +275,15 @@ class _SignupScreenState extends State<SignupScreen> {
                                 children: [
                                   Checkbox(
                                     value: isChecked,
-                                    onChanged: (value) =>
-                                        setState(() {
-                                          isChecked = value ?? false;
-                                        }),
+                                    onChanged: (value) => setState(() {
+                                      isChecked = value ?? false;
+                                    }),
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(4),
                                     ),
                                     checkColor: Colors.white,
                                     activeColor:
-                                    isDark ? JColors.blue : JColors.orange,
+                                        isDark ? JColors.blue : JColors.orange,
                                     side: BorderSide(
                                       color: isDark
                                           ? JColors.blue
@@ -302,9 +311,11 @@ class _SignupScreenState extends State<SignupScreen> {
                         MainButton(
                           buttonText: JText.signUp,
                           onPressed: () {
-                            Navigator.pushReplacement(context,
+                            Navigator.pushReplacement(
+                                context,
                                 MaterialPageRoute(
-                                  builder: (context) => const GenderScreen(),));
+                                  builder: (context) => GenderScreen(role: widget.role,),
+                                ));
                           },
                           isDark: isDark,
                         ),
@@ -320,13 +331,14 @@ class _SignupScreenState extends State<SignupScreen> {
                               ),
                             ),
                             TextButton(
-                              onPressed: () =>
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => const LoginScreen(),
-                                    ),
+                              onPressed: () => Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => LoginScreen(
+                                    role: widget.role,
                                   ),
+                                ),
+                              ),
                               child: Text(
                                 JText.login,
                                 style: TextStyle(

@@ -1,5 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:journo/screens/auth/choice_screen.dart';
 import 'package:journo/screens/dashboard/screens/favorites/favorites.dart';
 import 'package:journo/screens/dashboard/screens/home/home.dart';
 import 'package:journo/screens/dashboard/screens/notification/notification.dart';
@@ -135,8 +137,15 @@ class _DashboardScreenState extends State<DashboardScreen> {
         child: Material(
           color: isDark ? JColors.blue : JColors.orange,
           elevation: 10,
-          child: const InkWell(
-            child: SizedBox(
+          child: InkWell(
+            onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ChoiceScreen(
+                    role: "Creator",
+                  ),
+                )),
+            child: const SizedBox(
               height: 56,
               width: 56,
               child: Icon(

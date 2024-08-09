@@ -7,7 +7,9 @@ class JText {
   static const onBoardingDescription3 = "Explore a wide selection of categories, or use the search bar to find specific topics";
 
   // Choice Screen Text
-  static const choiceScreenText = "Explore the world, Billions of Thoughts.";
+  static const choiceScreenTextUser = "Explore the world, Billions of Thoughts.";
+  static const choiceScreenTextCreator = "Crafting Visions, One Masterpiece at a Time.";
+  static const forCreators = "For Creators";
 
   // Auth Texts
   static const login = "Login";

@@ -9,7 +9,9 @@ import 'package:journo/utils/constants/text_strings.dart';
 import 'package:journo/utils/helpers/helper_functions.dart';
 
 class ChoiceScreen extends StatelessWidget {
-  const ChoiceScreen({super.key});
+  const ChoiceScreen({super.key, required this.role});
+
+  final String role;
 
   @override
   Widget build(BuildContext context) {
@@ -24,15 +26,31 @@ class ChoiceScreen extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Image(
-                    image: AssetImage(isDark
-                        ? JImages.splashIconDark
-                        : JImages.splashIconLight)),
                 Column(
                   children: [
-                     const Text(JText.choiceScreenText,
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 28, color: JColors.white)),
+                    Image(
+                        image: AssetImage(isDark
+                            ? JImages.splashIconDark
+                            : JImages.splashIconLight)),
+                    Text(role == "Creator" ?
+                      JText.forCreators : "",
+                      style: TextStyle(
+                          color: isDark ? JColors.white : JColors.orange,
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold),
+                    )
+                  ],
+                ),
+                Column(
+                  children: [
+                    Text(
+                        role == "Creator"
+                            ? JText.choiceScreenTextCreator
+                            : JText.choiceScreenTextUser,
+                        style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 28,
+                            color: JColors.white)),
                     const SizedBox(
                       height: JSizes.spaceBtwSections,
                     ),
@@ -40,7 +58,11 @@ class ChoiceScreen extends StatelessWidget {
                         width: width * 0.8,
                         height: 50,
                         child: ElevatedButton(
-                            onPressed: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const LoginScreen(),)),
+                            onPressed: () => Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => LoginScreen(role: role,),
+                                )),
                             style: ElevatedButton.styleFrom(
                               backgroundColor:
                                   isDark ? JColors.blue : JColors.orange,
@@ -57,30 +79,46 @@ class ChoiceScreen extends StatelessWidget {
                                       fontWeight: FontWeight.w600,
                                       color: JColors.white),
                                 ),
-                                Icon(Iconsax.arrow_right_1, color: JColors.white,)
+                                Icon(
+                                  Iconsax.arrow_right_1,
+                                  color: JColors.white,
+                                )
                               ],
                             ))),
-
-                    const SizedBox(height: JSizes.spaceBtwItems,),
-
+                    const SizedBox(
+                      height: JSizes.spaceBtwItems,
+                    ),
                     SizedBox(
                       height: 50,
                       width: width * 0.8,
                       child: OutlinedButton(
-                        onPressed: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const SignupScreen(),)),
+                        onPressed: () => Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => SignupScreen(role: role,),
+                            )),
                         style: OutlinedButton.styleFrom(
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(JSizes.borderRadiusLg)
-                          ),
-                          side: const BorderSide(
-                            color: JColors.white,
-                            width: 2
-                          ),
+                              borderRadius:
+                                  BorderRadius.circular(JSizes.borderRadiusLg)),
+                          side:
+                              const BorderSide(color: JColors.white, width: 2),
                         ),
-                        child: const Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                          Text(JText.register, style: TextStyle(fontWeight: FontWeight.w600, color: JColors.white),),
-                          Icon(Iconsax.wifi5, color: JColors.white,)
-                        ],),
+                        child: const Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              JText.register,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  color: JColors.white),
+                            ),
+                            Icon(
+                              Iconsax.wifi5,
+                              color: JColors.white,
+                            )
+                          ],
+                        ),
                       ),
                     )
                   ],

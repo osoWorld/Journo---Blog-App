@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:journo/screens/admin/dashboard/admin_dashboard.dart';
 import 'package:journo/screens/category/category.dart';
 import 'package:journo/utils/constants/colors.dart';
 import 'package:journo/utils/constants/image_strings.dart';
@@ -8,10 +9,11 @@ import 'package:journo/utils/helpers/helper_functions.dart';
 import 'package:journo/widgets/common/buttons/main_button.dart';
 
 class GenderScreen extends StatefulWidget {
-  const GenderScreen({super.key});
+  const GenderScreen({super.key, required this.role});
 
   @override
   State<GenderScreen> createState() => _GenderScreenState();
+  final String role;
 }
 
 class _GenderScreenState extends State<GenderScreen> {
@@ -72,11 +74,11 @@ class _GenderScreenState extends State<GenderScreen> {
                       maxRadius: 130,
                       backgroundColor: isDark
                           ? (selectedGender == "female"
-                          ? JColors.blue.withOpacity(0.9)
-                          : JColors.black2)
+                              ? JColors.blue.withOpacity(0.9)
+                              : JColors.black2)
                           : (selectedGender == "female"
-                          ? JColors.orange.withOpacity(0.9)
-                          : JColors.white2),
+                              ? JColors.orange.withOpacity(0.9)
+                              : JColors.white2),
                       child: const Image(
                         image: AssetImage(JImages.femaleProfile),
                       ),
@@ -93,7 +95,9 @@ class _GenderScreenState extends State<GenderScreen> {
                 onPressed: () => Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const CategoryScreen(),
+                      builder: (context) => widget.role == "Creator"
+                          ? const AdminDashboardScreen()
+                          : const CategoryScreen(),
                     )),
                 isDark: isDark)
           ],

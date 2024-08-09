@@ -80,7 +80,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 onPressed: () => Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const ChoiceScreen(),
+                      builder: (context) => const ChoiceScreen(role: "User",),
                     )),
               )
             : Row(

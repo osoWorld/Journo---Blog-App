@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:journo/screens/admin/dashboard/admin_dashboard.dart';
 import 'package:journo/screens/auth/signup.dart';
-import 'package:journo/screens/category/category.dart';
+import 'package:journo/screens/dashboard/dashboard.dart';
 import 'package:journo/utils/constants/colors.dart';
 import 'package:journo/utils/constants/image_strings.dart';
 import 'package:journo/utils/constants/sizes.dart';
@@ -10,10 +11,11 @@ import 'package:journo/utils/helpers/helper_functions.dart';
 import 'package:journo/widgets/common/buttons/main_button.dart';
 
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+  const LoginScreen({super.key, required this.role});
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
+  final String role;
 }
 
 class _LoginScreenState extends State<LoginScreen> {
@@ -27,7 +29,9 @@ class _LoginScreenState extends State<LoginScreen> {
 
     return Scaffold(
         backgroundColor: isDark ? JColors.blue : JColors.orange,
-        appBar: AppBar(automaticallyImplyLeading: false,),
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+        ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -62,6 +66,16 @@ class _LoginScreenState extends State<LoginScreen> {
                                 fontSize: 18),
                           ),
                           const SizedBox(
+                            height: JSizes.spaceBtwItems / 2,
+                          ),
+                          Text(
+                            widget.role == "Creator" ? JText.forCreators : "",
+                            style: TextStyle(
+                                color: isDark ? JColors.blue : JColors.orange,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 14),
+                          ),
+                          const SizedBox(
                             height: JSizes.spaceBtwSections,
                           ),
                           Form(
@@ -69,17 +83,14 @@ class _LoginScreenState extends State<LoginScreen> {
                             child: Column(
                               children: [
                                 TextFormField(
-                                  style:
-                                      const TextStyle(color: JColors.black),
+                                  style: const TextStyle(color: JColors.black),
                                   decoration: InputDecoration(
                                       label: Text(
                                         JText.email,
                                         style: TextStyle(
                                             color: isDark
                                                 ? JColors.blue
-                                                : JColors.orange,
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 14),
+                                                : JColors.orange),
                                       ),
                                       prefixIcon: Icon(
                                         Iconsax.direct,
@@ -87,10 +98,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                             ? JColors.blue
                                             : JColors.orange,
                                       ),
-                                      // border: OutlineInputBorder(
-                                      //   borderRadius: BorderRadius.circular(
-                                      //       JSizes.borderRadiusXLg),
-                                      // ),
                                       enabledBorder: OutlineInputBorder(
                                           borderRadius: BorderRadius.circular(
                                               JSizes.borderRadiusXLg),
@@ -113,17 +120,15 @@ class _LoginScreenState extends State<LoginScreen> {
                                 ),
                                 TextFormField(
                                   obscureText: isObscure,
-                                  style:
-                                      const TextStyle(color: JColors.black),
+                                  style: const TextStyle(color: JColors.black),
                                   decoration: InputDecoration(
                                       label: Text(
                                         JText.password,
                                         style: TextStyle(
-                                            color: isDark
-                                                ? JColors.blue
-                                                : JColors.orange,
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 14),
+                                          color: isDark
+                                              ? JColors.blue
+                                              : JColors.orange,
+                                        ),
                                       ),
                                       prefixIcon: Icon(
                                         Iconsax.password_check,
@@ -143,10 +148,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                                 ? JColors.blue
                                                 : JColors.orange,
                                           )),
-                                      // border: OutlineInputBorder(
-                                      //   borderRadius: BorderRadius.circular(
-                                      //       JSizes.borderRadiusXLg),
-                                      // ),
                                       enabledBorder: OutlineInputBorder(
                                           borderRadius: BorderRadius.circular(
                                               JSizes.borderRadiusXLg),
@@ -224,7 +225,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) =>
-                                        const CategoryScreen(),
+                                        widget.role == "Creator"
+                                            ? const AdminDashboardScreen()
+                                            : const DashboardScreen(),
                                   )),
                               isDark: isDark),
                           Row(
@@ -235,16 +238,15 @@ class _LoginScreenState extends State<LoginScreen> {
                                 style: TextStyle(
                                     fontWeight: FontWeight.w500,
                                     fontSize: 14,
-                                    color: isDark
-                                        ? JColors.blue
-                                        : JColors.orange),
+                                    color:
+                                        isDark ? JColors.blue : JColors.orange),
                               ),
                               TextButton(
                                   onPressed: () => Navigator.push(
                                       context,
                                       MaterialPageRoute(
                                         builder: (context) =>
-                                            const SignupScreen(),
+                                            SignupScreen(role: widget.role,),
                                       )),
                                   child: Text(
                                     JText.signUp,
