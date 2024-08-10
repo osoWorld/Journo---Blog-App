@@ -23,4 +23,13 @@ class JImages {
   static const horizontalDemo = "assets/images/horizontal.jpg";
   static const verticalDemo = "assets/images/vertical.jpg";
 
+
+  /// ADMIN PANEL
+  // Home
+  static const adminCoding = "assets/images/coding.jpg";
+  static const adminMacBook = "assets/images/macbook.jpg";
+  static const adminNetflix = "assets/images/netflix.jpg";
+  static const adminSmartWatch = "assets/images/smart_watch.jpg";
+  static const adminWhatsapp = "assets/images/whatsapp.jpg";
+
 }

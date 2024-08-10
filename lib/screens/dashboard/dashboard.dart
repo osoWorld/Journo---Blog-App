@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:journo/screens/auth/choice_screen.dart';
@@ -164,22 +163,18 @@ class _DashboardScreenState extends State<DashboardScreen> {
   Widget navBarItems(IconData icon, int index, bool isDark) {
     return InkWell(
       onTap: () => onItemTap(index),
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 2.0, horizontal: 28),
-            child: Icon(
-              icon,
-              color: selectedIndex == index
-                  ? isDark
-                      ? JColors.blue
-                      : JColors.orange
-                  : isDark
-                      ? JColors.white
-                      : JColors.black,
-            ),
-          ),
-        ],
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 2.0, horizontal: 28),
+        child: Icon(
+          icon,
+          color: selectedIndex == index
+              ? isDark
+                  ? JColors.blue
+                  : JColors.orange
+              : isDark
+                  ? JColors.white
+                  : JColors.black,
+        ),
       ),
     );
   }

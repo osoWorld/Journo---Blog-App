@@ -59,4 +59,15 @@ class JText {
 
   static const profileEdit = "You can edit your profile here.";
   static const yourName = "Your Name";
+
+  // Home
+  static const latestPost = "Latest Posts";
+  static const seeAll = "See All";
+  static const postViews = "129 Views";
+  static const postTime = "6 months ago";
+  static const titleNetflix = "Netflix Will Charge Money For Password Sharing";
+  static const titleWhatsapp = "WhatsApp Testing The Ability To Post Voice Notes As Statuses";
+  static const titleMacBook = "Here's How Much The New MacBook Pros";
+  static const titleSmartWatch = "Noise ColorFit Caliber Buzz Smartwatch Launched In Pakistan";
+  static const titleCoding = "The Growth Of Developers Is Growing Day By Day. This Is Will New Possibilities";
 }
