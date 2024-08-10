@@ -6,10 +6,11 @@ import 'package:journo/utils/constants/colors.dart';
 import 'package:journo/utils/helpers/helper_functions.dart';
 
 class AdminDashboardScreen extends StatefulWidget {
-  const AdminDashboardScreen({super.key});
+  const AdminDashboardScreen({super.key, this.initialIndex = 0});
 
   @override
   State<AdminDashboardScreen> createState() => _AdminDashboardScreenState();
+  final int initialIndex;
 }
 
 class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
@@ -29,6 +30,12 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
       color: Colors.red,
     ),
   ];
+
+  @override
+  void initState() {
+    selectedIndex = widget.initialIndex;
+    super.initState();
+  }
 
   void onItemTap (int index) {
     setState(() {

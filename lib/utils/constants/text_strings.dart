@@ -59,6 +59,7 @@ class JText {
 
   static const profileEdit = "You can edit your profile here.";
   static const yourName = "Your Name";
+  static const yourBio = "Bio";
 
   // Home
   static const latestPost = "Latest Posts";
@@ -82,4 +83,10 @@ class JText {
   static const catEntertainment = "Entertainment";
   static const catHeyCat = "Hey cat";
   static const catFoods = "Foods";
+
+  static const addNewCategory = "Add New Category";
+  static const updateCategory = "Update Category";
+
+  static const catModeTitle = "Title";
+  static const catModeSlug = "Slug";
 }

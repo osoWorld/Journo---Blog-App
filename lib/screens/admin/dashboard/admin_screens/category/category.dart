@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:journo/screens/admin/dashboard/admin_screens/category/screens/category_module.dart';
 import 'package:journo/utils/constants/colors.dart';
 import 'package:journo/utils/constants/sizes.dart';
 import 'package:journo/utils/constants/text_strings.dart';
@@ -29,14 +30,17 @@ class AdminCategoryScreen extends StatelessWidget {
         title: const Text(
           JText.category,
           style: TextStyle(
-            color: JColors.white,
-            fontSize: 20,
-          ),
+              color: JColors.white, fontSize: 20, fontWeight: FontWeight.w400),
         ),
         automaticallyImplyLeading: false,
         actions: [
           IconButton(
-              onPressed: () => {},
+              onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        const AdminCategoryModule(module: "Add"),
+                  )),
               icon: const Icon(
                 Iconsax.add,
                 color: Colors.white,
@@ -65,13 +69,23 @@ class AdminCategoryScreen extends StatelessWidget {
                         const SizedBox(
                           width: 20,
                         ),
-                        Text(categories[index])
+                        Text(
+                          categories[index],
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        )
                       ],
                     ),
                     Row(
                       children: [
                         IconButton(
-                            onPressed: () => {},
+                            onPressed: () => Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      const AdminCategoryModule(
+                                          module: "Update"),
+                                )),
                             icon: const Icon(
                               Icons.edit,
                               color: JColors.green,
