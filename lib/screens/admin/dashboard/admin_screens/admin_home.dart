@@ -38,8 +38,9 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
   Widget build(BuildContext context) {
     final isDark = JHelper.isDarkMode(context);
     return Scaffold(
+      appBar: AppBar(automaticallyImplyLeading: false,),
       body: Padding(
-        padding: EdgeInsets.only(
+        padding: const EdgeInsets.only(
             top: JSizes.defaultSpace,
             left: JSizes.defaultSpace,
             right: JSizes.defaultSpace),
@@ -57,6 +58,10 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
                     },
                     options: CarouselOptions(
                       height: 400,
+                      autoPlay: true,
+                      autoPlayInterval: const Duration(seconds: 3),
+                      autoPlayAnimationDuration: const Duration(milliseconds: 800),
+                      autoPlayCurve: Curves.fastOutSlowIn,
                       onPageChanged: (index, reason) => setState(() {
                         activeIndex = index;
                       }),
@@ -85,6 +90,7 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
                 ),
               ],
             ),
+            const SizedBox(height: 4,),
             Expanded(
               child: ListView.builder(
                 itemCount: 5,
@@ -188,7 +194,7 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
         activeIndex: activeIndex,
         count: images.length,
         effect: ExpandingDotsEffect(
-            dotWidth: 15,
+            dotWidth: 14,
             dotHeight: 10,
             activeDotColor: isDark ? JColors.blue : JColors.orange),
       );

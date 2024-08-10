@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:journo/screens/admin/dashboard/admin_screens/admin_home.dart';
+import 'package:journo/screens/admin/dashboard/admin_screens/category/category.dart';
 import 'package:journo/utils/constants/colors.dart';
 import 'package:journo/utils/helpers/helper_functions.dart';
 
@@ -16,11 +17,7 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
 
   static final List<Widget> screens = [
     const AdminHomeScreen(),
-    Container(
-      height: double.infinity,
-      width: double.infinity,
-      color: Colors.grey,
-    ),
+    const AdminCategoryScreen(),
     Container(
       height: double.infinity,
       width: double.infinity,

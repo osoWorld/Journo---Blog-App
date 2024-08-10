@@ -70,4 +70,16 @@ class JText {
   static const titleMacBook = "Here's How Much The New MacBook Pros";
   static const titleSmartWatch = "Noise ColorFit Caliber Buzz Smartwatch Launched In Pakistan";
   static const titleCoding = "The Growth Of Developers Is Growing Day By Day. This Is Will New Possibilities";
+
+  // Category
+  static const category = "Category";
+  static const catSnapchat = "Snapchat";
+  static const catProcessor = "Processor";
+  static const catMacOS = "MacOs";
+  static const catNews = "News";
+  static const catNewCategory = "New Category";
+  static const catReviews = "Reviews";
+  static const catEntertainment = "Entertainment";
+  static const catHeyCat = "Hey cat";
+  static const catFoods = "Foods";
 }
