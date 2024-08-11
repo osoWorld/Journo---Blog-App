@@ -1,50 +1,56 @@
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
-import 'package:journo/screens/admin/dashboard/admin_screens/category/screens/category_module.dart';
+import 'package:journo/screens/admin/dashboard/admin_screens/tags/screens/admin_tags_module.dart';
 import 'package:journo/utils/constants/colors.dart';
-import 'package:journo/utils/constants/sizes.dart';
 import 'package:journo/utils/constants/text_strings.dart';
 import 'package:journo/utils/helpers/helper_functions.dart';
 
-class AdminCategoryScreen extends StatelessWidget {
-  const AdminCategoryScreen({super.key});
+import '../../../../../utils/constants/sizes.dart';
+
+class AdminTagsScreen extends StatefulWidget {
+  const AdminTagsScreen({super.key});
+
+  @override
+  State<AdminTagsScreen> createState() => _AdminTagsScreenState();
+}
+
+class _AdminTagsScreenState extends State<AdminTagsScreen> {
+  final List<String> tags = [
+    JText.tagOkiewe,
+    JText.tagTesting,
+    JText.tagLol,
+    JText.tagHuss,
+    JText.tagLala,
+    JText.tagMast,
+    JText.tagHaha,
+    JText.tagEntertainment,
+    JText.tagMyTag,
+    JText.tagNewTagsNow,
+  ];
 
   @override
   Widget build(BuildContext context) {
-    final List<String> categories = [
-      JText.catSnapchat,
-      JText.catProcessor,
-      JText.catMacOS,
-      JText.catNews,
-      JText.catNewCategory,
-      JText.catReviews,
-      JText.catEntertainment,
-      JText.catHeyCat,
-      JText.catFoods,
-    ];
     final isDark = JHelper.isDarkMode(context);
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
         backgroundColor: isDark ? JColors.blue : JColors.orange,
-        title: const Text(
-          JText.category,
-          style: TextStyle(
-              color: JColors.white, fontSize: 20, fontWeight: FontWeight.w400),
-        ),
         automaticallyImplyLeading: false,
+        centerTitle: true,
+        title: Text(
+          JText.addTags,
+          style: TextStyle(
+              color: Colors.white, fontSize: 20, fontWeight: FontWeight.w400),
+        ),
         actions: [
           IconButton(
               onPressed: () => Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) =>
-                        const AdminCategoryModule(module: "Add"),
+                    builder: (context) => AdminTagsModule(module: "Add"),
                   )),
-              icon: const Icon(
-                Iconsax.add,
+              icon: Icon(
+                Icons.add,
                 color: Colors.white,
-              ))
+              )),
         ],
       ),
       body: Padding(
@@ -53,7 +59,7 @@ class AdminCategoryScreen extends StatelessWidget {
             left: JSizes.defaultSpace,
             right: JSizes.defaultSpace),
         child: ListView.builder(
-          itemCount: categories.length,
+          itemCount: tags.length,
           itemBuilder: (context, index) {
             return Card(
               color: JColors.white,
@@ -70,7 +76,7 @@ class AdminCategoryScreen extends StatelessWidget {
                           width: 20,
                         ),
                         Text(
-                          categories[index],
+                          tags[index],
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                         )
@@ -79,13 +85,14 @@ class AdminCategoryScreen extends StatelessWidget {
                     Row(
                       children: [
                         IconButton(
-                            onPressed: () => Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      const AdminCategoryModule(
-                                          module: "Update"),
-                                )),
+                            onPressed: () =>
+                            Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                              const AdminTagsModule(
+                                  module: "Update"),
+                            )),
                             icon: const Icon(
                               Icons.edit,
                               color: JColors.green,

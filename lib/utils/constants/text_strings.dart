@@ -89,4 +89,21 @@ class JText {
 
   static const catModeTitle = "Title";
   static const catModeSlug = "Slug";
+
+  // Tag
+  static const tagOkiewe = "Okiewe";
+  static const tagTesting = "Testing";
+  static const tagLol = "Lol";
+  static const tagHuss = "Huss";
+  static const tagLala = "Lala";
+  static const tagMast = "Mast";
+  static const tagHaha = "Haha";
+  static const tagEntertainment = "Entertainment";
+  static const tagMyTag = "My Tag";
+  static const tagNewTagsNow = "New Tags Now";
+
+  static const addTags = "Add Tags";
+  static const addNewTags = "Add New Tags";
+  static const updateTags = "Update Tags";
+
 }
