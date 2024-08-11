@@ -16,13 +16,41 @@ class UserProfileScreen extends StatefulWidget {
 
 class _UserProfileScreenState extends State<UserProfileScreen> {
   var isObscure = true;
-  // bool _hasChanges = false;
-  //
-  // // Controllers for text fields
-  // final _nameController = TextEditingController();
-  // final _bioController = TextEditingController();
-  // final _emailController = TextEditingController();
-  // final _passwordController = TextEditingController();
+  bool _hasChanges = false;
+
+  // Controllers for text fields
+  final _nameController = TextEditingController();
+  final _bioController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+
+    // Add listeners to track changes
+    _nameController.addListener(_onTextChanged);
+    _bioController.addListener(_onTextChanged);
+    _emailController.addListener(_onTextChanged);
+    _passwordController.addListener(_onTextChanged);
+  }
+
+  @override
+  void dispose() {
+    // Dispose of the controllers
+    _nameController.dispose();
+    _bioController.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
+  void _onTextChanged() {
+    // Set the state to reflect that changes have been made
+    setState(() {
+      _hasChanges = true;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -141,6 +169,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                       height: JSizes.spaceBtwItems,
                     ),
                     TextFormField(
+                      controller: _nameController,
                       decoration: InputDecoration(
                           label: Text(
                             JText.yourName,
@@ -170,6 +199,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                       height: JSizes.spaceBtwItems,
                     ),
                     TextFormField(
+                      controller: _bioController,
                       decoration: InputDecoration(
                           label: Text(
                             JText.yourBio,
@@ -199,6 +229,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                       height: JSizes.spaceBtwItems,
                     ),
                     TextFormField(
+                      controller: _emailController,
                       decoration: InputDecoration(
                           label: Text(
                             JText.email,
@@ -228,6 +259,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                       height: JSizes.spaceBtwItems,
                     ),
                     TextFormField(
+                      controller: _passwordController,
                       obscureText: isObscure,
                       decoration: InputDecoration(
                           label: Text(
@@ -268,11 +300,11 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                       height: 52,
                       child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.grey,
+                              backgroundColor: _hasChanges ? JColors.orange : Colors.grey,
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(
                                       JSizes.borderRadiusLg))),
-                          onPressed: () => {},
+                          onPressed: _hasChanges ? () => {} : null,
                           child: const Text(
                             "Update Profile",
                             style: TextStyle(
