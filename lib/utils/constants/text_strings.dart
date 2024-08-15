@@ -109,4 +109,9 @@ class JText {
   static const addNewTags = "Add New Tags";
   static const updateTags = "Update Tags";
 
+  // Post
+  static const postsAddPost = "Update Tags";
+  static const postsTags = "Tags";
+  static const postsCategories = "Categories";
+
 }

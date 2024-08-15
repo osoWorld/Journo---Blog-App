@@ -32,4 +32,9 @@ class JImages {
   static const adminSmartWatch = "assets/images/smart_watch.jpg";
   static const adminWhatsapp = "assets/images/whatsapp.jpg";
 
+  // Upload Blog
+  static const uploadBlogLight = "assets/images/upload_blog_light.jpg";
+  static const uploadBlogDark = "assets/images/upload_blog_dark.png";
+  static const uploadBlog = "assets/images/upload_blog.jpg";
+
 }

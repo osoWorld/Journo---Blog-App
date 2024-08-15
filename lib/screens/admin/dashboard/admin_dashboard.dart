@@ -4,6 +4,7 @@ import 'package:journo/screens/admin/dashboard/admin_screens/admin_home.dart';
 import 'package:journo/screens/admin/dashboard/admin_screens/category/category.dart';
 import 'package:journo/screens/admin/dashboard/admin_screens/profile/admin_profile.dart';
 import 'package:journo/screens/admin/dashboard/admin_screens/tags/admin_tag.dart';
+import 'package:journo/screens/admin/post/post_blog.dart';
 import 'package:journo/utils/constants/colors.dart';
 import 'package:journo/utils/helpers/helper_functions.dart';
 
@@ -31,7 +32,7 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
     super.initState();
   }
 
-  void onItemTap (int index) {
+  void onItemTap(int index) {
     setState(() {
       selectedIndex = index;
     });
@@ -50,7 +51,9 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
           children: [
             navBarItems(0, Iconsax.category, isDark),
             navBarItems(1, Iconsax.tag, isDark),
-            const SizedBox(width: 40,),
+            const SizedBox(
+              width: 40,
+            ),
             navBarItems(2, Iconsax.hashtag, isDark),
             navBarItems(3, Iconsax.user, isDark)
           ],
@@ -60,12 +63,19 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
         child: Material(
           color: isDark ? JColors.blue : JColors.orange,
           elevation: 2,
-          child: const SizedBox(
-            height: 56,
-            width: 56,
-            child: Icon(
-              Iconsax.add,
-              color: JColors.white,
+          child: InkWell(
+            onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const PostBlogScreen(),
+                )),
+            child: const SizedBox(
+              height: 56,
+              width: 56,
+              child: Icon(
+                Iconsax.add,
+                color: JColors.white,
+              ),
             ),
           ),
         ),
