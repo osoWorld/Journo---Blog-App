@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:journo/screens/admin/dashboard/admin_screens/admin_home.dart';
 import 'package:journo/screens/admin/dashboard/admin_screens/category/category.dart';
+import 'package:journo/screens/admin/dashboard/admin_screens/profile/admin_profile.dart';
 import 'package:journo/screens/admin/dashboard/admin_screens/tags/admin_tag.dart';
 import 'package:journo/utils/constants/colors.dart';
 import 'package:journo/utils/helpers/helper_functions.dart';
@@ -21,11 +22,7 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
     const AdminHomeScreen(),
     const AdminCategoryScreen(),
     const AdminTagsScreen(),
-    Container(
-      height: double.infinity,
-      width: double.infinity,
-      color: Colors.red,
-    ),
+    const AdminProfileScreen(),
   ];
 
   @override

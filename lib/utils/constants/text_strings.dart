@@ -51,6 +51,7 @@ class JText {
   static const demoDate = "07 August 2024";
   static const demoRead = "4 min read";
   static const demoTime = "2 min ago";
+  static const demoEmail = "mainsuffian74@gmail.com";
   static const demoName = "Mian Suffian";
   static const demoBio = "Mian Suffian is a Full Stack developer and a software engineer who is more passionate about technology. His ambition towards technology is huge.";
   static const demoNotification = "2 More Blogs have been posted for Space and Tourism.";
@@ -60,6 +61,8 @@ class JText {
   static const profileEdit = "You can edit your profile here.";
   static const yourName = "Your Name";
   static const yourBio = "Bio";
+  static const profileForCreator = "Profile For Creator";
+  static const profileMyPost = "My Posts";
 
   // Home
   static const latestPost = "Latest Posts";
